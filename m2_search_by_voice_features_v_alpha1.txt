@@ -1,0 +1,30 @@
+M2 Module: searchByVoice
+
+@author Aurelio Benedí
+@email abenedi@gmail.com
+
+
+V.alpha 1.0
+
+[Features 1.0]
+
+	Enable/Disable Search by Voice Recognition
+	Devices Scope (desktop or mobile or both: desktop & mobile)
+	Input Seach-Id (dom) Configurable.
+	Voice Languages Recognition: Spanish and English
+	Doonfinder® [Beta] Compatible
+
+[Software Requeriments]
+	
+	*Magento 2.1.x, 2.2.x
+	*SSL installed in Server is mandatory
+
+[Backend Options]
+
+	Enable Search by Voice Recognition
+	Devices Scope (desktop | mobile | both: desktop & mobile)
+	Input Seach Id: (input field. By default: search)
+	Voice Language (Idioms Dropdown Menu)
+	
+	Doonfinder® [Beta] Compatible: enabled / disabled
+		[i] enable only if you already have installed the latest Doofinder Extention (v.6)

@@ -1,0 +1,17 @@
+<script type="text/javascript">// <![CDATA[
+	console.log("SearchByVoice: Loading Configuration...");
+	
+	window.searchbyvoice_enabled 			= <?=$this->helper('Magevoice\SearchByVoice\Helper\Data')->getConfigValue('searchbyvoice/general/enabled');?>;
+	window.searchbyvoice_search_id 			= "<?=$this->helper('Magevoice\SearchByVoice\Helper\Data')->getConfigValue('searchbyvoice/general/search_id');?>";
+	window.searchbyvoice_device_scope 		= "<?=$this->helper('Magevoice\SearchByVoice\Helper\Data')->getConfigValue('searchbyvoice/general/device_scope');?>";
+	window.searchbyvoice_voice_language 	= "<?=$this->helper('Magevoice\SearchByVoice\Helper\Data')->getConfigValue('searchbyvoice/general/voice_language');?>";
+	window.searchbyvoice_doofinder_enabled	= <?=$this->helper('Magevoice\SearchByVoice\Helper\Data')->getConfigValue('searchbyvoice/general/doofinder_enabled');?>;
+	window.searchbyvoice_images_path		= "<?=$this->getViewFileUrl('Magevoice_SearchByVoice::images/')?>";
+	
+    require([
+        'jquery',
+		'domReady!',
+        'searchbyvoice'
+    ], function ($, script) {});
+    // ]]>
+</script>

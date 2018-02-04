@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magevoice" translate="label" sortOrder="1000">
+            <label>MageVoice Tools</label>
+        </tab>
+        <section id="searchbyvoice" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Search by Voice</label>
+            <tab>magevoice</tab>
+            <resource>Magevoice_SearchByVoice::searchbyvoice_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Search by Voice: Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Module Enabled</label>
+					<comment>Only available in HTPPS protocol and iOS incompatible for now.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="search_id" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Input Search Id</label>
+                    <comment>Write the input field ID of the searcher. (HTML ID in DOM)</comment>
+                </field>				
+				<field id="device_scope" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Device Scope</label>
+					<source_model>Magevoice\SearchByVoice\Model\Config\Source\DeviceScope</source_model>
+				</field>				
+				<field id="voice_language" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Voice Language - Country</label>
+					<source_model>Magevoice\SearchByVoice\Model\Config\Source\VoiceLanguage</source_model>
+				</field>
+                <field id="doofinder_enabled" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Doofinder® [Beta] Compatible:</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>Enable only if you already have installed the latest Doofinder Extension (Layer v.6)</comment>
+                </field>				
+            </group>
+        </section>
+    </system>
+</config>
