@@ -4,7 +4,7 @@ Approaching in the functionality of searching by voice in Magento 2 (basic)
 
 # Short Description
 
-This is an approach in the functionality of searching by voice. Magento Module for 'playing' with a very first (Alpha) version. ;-)
+This is an approach in the functionality of searching by voice. Here you have a Magento Module for 'playing' with a very first (Alpha) version. ;-)
 
 I used the HTML5 Web Speech API: https://ctrlq.org/code/19680-html5-web-speech-api
 
