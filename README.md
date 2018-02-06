@@ -6,7 +6,7 @@ Approaching in the functionality of searching by voice in Magento 2 (basic)
 
 This is an approach in the functionality of searching by voice. Here you have a Magento Module for 'playing' with a very first (Alpha) version. ;-)
 
-I used the HTML5 Web Speech API: https://ctrlq.org/code/19680-html5-web-speech-api
+I used the HTML5 Web Speech API: https://w3c.github.io/speech-api/speechapi.html
 
 iOS not support this API for now. But there's a "Global Usage" of 60% and 73% in Spain (source: https://caniuse.com/#feat=speech-recognition )
 
@@ -24,12 +24,11 @@ Dowload the repository and upload the folder&files to yout Magento-Installation 
     
 	Clean Cache and Deploy the statics.
 	
+		php bin/magento setup:static-content:deploy
+		
 		php bin/magento cache:clean
 		
 		php bin/magento cache:flush
-		
-		php bin/magento setup:static-content:deploy
-    
 
 # Live Demos: (American English configured)
 
