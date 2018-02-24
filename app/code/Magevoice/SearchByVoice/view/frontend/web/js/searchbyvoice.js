@@ -20,12 +20,30 @@ define([
 				{
 					console.log("SearchByVoice: Search input found!");
 					
-					searchByVoiceCreateLayer();
+					$("#"+window.searchbyvoice_search_id).show();
 					
-					$( window ).resize(function() {
-						searchByVoiceCreateLayer()
+					$(".searchbyvoice-trigger").on('click touch', function () {
+						$(".searchbyvoice-trigger").removeClass('searchbyvoice_mic').addClass('searchbyvoice_mic_on');
+						$("#"+window.searchbyvoice_search_id).val('');
+						$("#"+window.searchbyvoice_search_id).attr("placeholder", "Listening...");
+						startDictation();
 					});
-					
+
+					if(isMobileDevice() == true && (window.searchbyvoice_device_scope == 'mobile' || window.searchbyvoice_device_scope == 'both'))
+					{
+						console.log("SearchByVoice: Mobile detected and Mobile or both-devices assigned.");
+						$(".searchbyvoice-trigger").show();
+					}
+					else if(isMobileDevice() == false && (window.searchbyvoice_device_scope == 'desktop' || window.searchbyvoice_device_scope == 'both'))
+					{
+						console.log("SearchByVoice: Desktop detected and desktop or both-devices assigned.");
+						$(".searchbyvoice-trigger").show();
+					}
+					else
+					{
+						console.log("SearchByVoice: Unknown device/config-device detection. Device configured: "+window.searchbyvoice_device_scope+" Is Mobile: "+isMobileDevice());
+						$(".searchbyvoice-trigger").hide();
+					}		
 				}
 				else
 				{
@@ -46,75 +64,13 @@ define([
 		//--> Functions Segment:
 		
 		/**
-		 * Function for creating the SearchByVoice Layer.
-		 * @return none
-		 */		
-		function searchByVoiceCreateLayer()
-		{
-			var mic_html 			= '<div title="Search by Voice" id="searchByVoice"></div>';
-			var class_name_mic_off	= 'searchbyvoice_mic';
-			var class_name_mic_on	= 'searchbyvoice_mic_on';
-			
-			if($( window ).width() < 768)
-			{
-				console.log("SearchByVoice: <768 --> "+$( window ).width());
-				if($("#searchByVoice").length>0) 
-					$("#searchByVoice").remove();
-				$("#search_mini_form .field").prepend(mic_html);
-				class_name_mic_off	= 'searchbyvoice_mic_tablet_mobile';
-				class_name_mic_on	= 'searchbyvoice_mic_on_tablet_mobile';
-			}
-			else
-			{
-				console.log("SearchByVoice: >=768 --> "+$( window ).width());
-				if($("#searchByVoice").length>0) 
-					$("#searchByVoice").remove();
-				$(".actions button.search").after(mic_html);
-				class_name_mic_off	= 'searchbyvoice_mic';
-				class_name_mic_on	= 'searchbyvoice_mic_on';
-			}
-			
-			$("#searchByVoice").addClass(class_name_mic_off);
-			
-			$("#searchByVoice").hide();
-					
-			$("#searchByVoice").on('click touch', function () {
-				$("#"+window.searchbyvoice_search_id).val('');
-				if($( window ).width() < 768) jQuery('#search_mini_form .search .label').addClass("active");
-				$("#searchByVoice").removeClass(class_name_mic_off).addClass(class_name_mic_on);
-				$("#"+window.searchbyvoice_search_id).attr("placeholder", "Listening...");
-				startDictation(class_name_mic_on,class_name_mic_off);
-			});
-					
-					
-			if(isMobileDevice() == true && (window.searchbyvoice_device_scope == 'mobile' || window.searchbyvoice_device_scope == 'both'))
-			{
-				console.log("SearchByVoice: Mobile detected and Mobile or both-devices asigned.");
-				$("#searchByVoice").show();
-			}
-			else if(isMobileDevice() == false && (window.searchbyvoice_device_scope == 'desktop' || window.searchbyvoice_device_scope == 'both'))
-			{
-				console.log("SearchByVoice: Desktop detected and desktop or both-devices asigned.");
-				$("#searchByVoice").show();
-			}
-			else
-			{
-				console.log("SearchByVoice: Unknown device/config-device detection. Device configured: "+window.searchbyvoice_device_scope+" Is Mobile: "+isMobileDevice());
-				$("#searchByVoice").hide();
-			}
-		}
-		
-		/**
 		 * Function which detects and active the searching by voice.
 		 * @return none
 		 */
 		function startDictation(class_name_mic_on,class_name_mic_off)
 		{
-			console.log('Debug VoiceSearch #1');
-			if (window.hasOwnProperty('webkitSpeechRecognition')) {
-
-				console.log('Debug VoiceSearch #2');
-			
+			if (window.hasOwnProperty('webkitSpeechRecognition'))
+			{
 				var recognition = new webkitSpeechRecognition();
 
 				recognition.continuous = true;

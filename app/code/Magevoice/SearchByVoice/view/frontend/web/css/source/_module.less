@@ -1,43 +1,73 @@
-.block-search input {
-    padding-right: 50px !important;
-}
+//mixings
 .searcbyvoice_common {
-    background-size: 18px 18px;
-    z-index: 1;
-    position: absolute;
-    left: 218px;
-    top: 7px;
-    cursor: pointer;
-    width: 18px;
-    height: 18px;
+	background-size: 18px 18px;
+	z-index: 1;
+	position: absolute;
+	left: 218px;
+	top: 7px;
+	cursor: pointer;
+	width: 18px;
+	height: 18px;
 }
-.searchbyvoice_common_tablet{
-    background-size: 25px 25px;
-    z-index: 1;
-    cursor: pointer;
-    width: 25px;
-    height: 25px;
-    display: inline-block;
-    float: right;
-    margin-right: 5px;
-}
+.searchbyvoice_common_mobile{
+	background-size: 25px 25px;
+	z-index: 1;
+	cursor: pointer;
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+	float: right;
+	margin-right: 5px;
+}	
 
-.searchbyvoice_mic {
-	background: url('@{baseDir}/Magevoice_SearchByVoice/images/mic_gray_light.gif') no-repeat -1px 0px;
-	.searcbyvoice_common;
+// Common
+// (for styles used in both mobile and desktop views)
+& when (@media-common = true) {
+	.block-search input {
+		padding-right: 50px !important;
+	}
 }
-.searchbyvoice_mic_on {
-	background: url('@{baseDir}/Magevoice_SearchByVoice/images/mic_red_light.gif') no-repeat -1px 0px;
-	.searcbyvoice_common;
+ 
+// Mobile
+// (for all mobile styles.)
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+	.searchbyvoice_mic {
+		background: url('@{baseDir}Magevoice_SearchByVoice/images/mic_gray_light.gif') no-repeat -1px 0px;
+		.searchbyvoice_common_mobile;
+	}
+	.searchbyvoice_mic_on {
+		background: url('@{baseDir}Magevoice_SearchByVoice/images/mic_red_light.gif') no-repeat -1px 0px;
+		.searchbyvoice_common_mobile;
+	}
+	form.searchbyvoice-trigger{display:block;}
+	#searchbyvoice-trigger-tablet-desktop{display:none;}
 }
-
-.searchbyvoice_mic_tablet_mobile {
-	background: url('@{baseDir}/Magevoice_SearchByVoice/images/mic_gray_light.gif') no-repeat -1px 0px;
-	.searchbyvoice_common_tablet;
+ 
+// Tablet
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+	.searchbyvoice_mic {
+		background: url('@{baseDir}Magevoice_SearchByVoice/images/mic_gray_light.gif') no-repeat -1px 0px;
+		.searcbyvoice_common;
+	}
+	.searchbyvoice_mic_on {
+		background: url('@{baseDir}Magevoice_SearchByVoice/images/mic_red_light.gif') no-repeat -1px 0px;
+		.searcbyvoice_common;
+	}
+	form.searchbyvoice-trigger{display:none;}
+	#searchbyvoice-trigger-tablet-desktop{display:block;}
 }
-.searchbyvoice_mic_on_tablet_mobile {
-	background: url('@{baseDir}/Magevoice_SearchByVoice/images/mic_red_light.gif') no-repeat -1px 0px;
-	.searchbyvoice_common_tablet;
+ 
+// Desktop
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+	.searchbyvoice_mic {
+		background: url('@{baseDir}Magevoice_SearchByVoice/images/mic_gray_light.gif') no-repeat -1px 0px;
+		.searcbyvoice_common;
+	}
+	.searchbyvoice_mic_on {
+		background: url('@{baseDir}Magevoice_SearchByVoice/images/mic_red_light.gif') no-repeat -1px 0px;
+		.searcbyvoice_common;
+	}
+	form.searchbyvoice-trigger{display:none;}
+	#searchbyvoice-trigger-tablet-desktop{display:block;}
+	
 }
-
-
