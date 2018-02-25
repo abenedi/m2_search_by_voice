@@ -20,7 +20,7 @@ define([
 				{
 					console.log("SearchByVoice: Search input found!");
 					
-					$("#"+window.searchbyvoice_search_id).show();
+					//$(".searchbyvoice-trigger").hide();
 					
 					$(".searchbyvoice-trigger").on('click touch', function () {
 						$(".searchbyvoice-trigger").removeClass('searchbyvoice_mic').addClass('searchbyvoice_mic_on');
@@ -32,12 +32,16 @@ define([
 					if(isMobileDevice() == true && (window.searchbyvoice_device_scope == 'mobile' || window.searchbyvoice_device_scope == 'both'))
 					{
 						console.log("SearchByVoice: Mobile detected and Mobile or both-devices assigned.");
-						$(".searchbyvoice-trigger").show();
+						$("#searchbyvoice-trigger-mobile").show();
+						if(window.searchbyvoice_device_scope != 'both')
+							$("#searchbyvoice-trigger-tablet-desktop").hide();
 					}
 					else if(isMobileDevice() == false && (window.searchbyvoice_device_scope == 'desktop' || window.searchbyvoice_device_scope == 'both'))
 					{
 						console.log("SearchByVoice: Desktop detected and desktop or both-devices assigned.");
-						$(".searchbyvoice-trigger").show();
+						$("#searchbyvoice-trigger-tablet-desktop").show();
+						if(window.searchbyvoice_device_scope != 'both')
+							$("#searchbyvoice-trigger-mobile").hide();
 					}
 					else
 					{
