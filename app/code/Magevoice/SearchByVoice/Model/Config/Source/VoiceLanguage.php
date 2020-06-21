@@ -22,6 +22,9 @@ class VoiceLanguage implements \Magento\Framework\Option\ArrayInterface
 					['value' => "es-ES", 'label' => __('Spain')],
 					['value' => "en-GB", 'label' => __('United Kingdom')],
 					['value' => "en-US", 'label' => __('United States')],
+					['value' => "fr-FR", 'label' => __('French  (France)')],
+					['value' => "pt-PT", 'label' => __('Portuguese (Portugal)')],
+					['value' => "it-IT", 'label' => __('Italian (Italy')],
         ];
     }
 }
